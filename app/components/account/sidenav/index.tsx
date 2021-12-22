@@ -11,6 +11,7 @@ import {
 // import { useAccountContext } from '../../../context'
 export const navigationSecondaryHeight = '48px'
 import { useLocation } from 'react-router-dom'
+import { Slugger } from 'marked'
 
 const NavContainer = styled.div<{ backgroundColor?: string | undefined }>`
   overflow: auto;
@@ -82,6 +83,8 @@ const SideNav: React.FC = () => {
   ]
 
   const location = useLocation();
+  const slug = location.pathname.split('/')[location.pathname.split('/').length - 1]
+  console.log(slug)
 
   return (
     <NavContainer
@@ -110,7 +113,7 @@ const SideNav: React.FC = () => {
                 <StyledMenuItem
                   href={href}
                   key={id}
-                  selected={location.pathname.indexOf(href) > -1}
+                  selected={slug.indexOf(href.split('/')[href.split('/').length - 1]) > -1}
                   overrides={{
                     typographyPreset: 'utilityButton030',
                     stylePreset: {
