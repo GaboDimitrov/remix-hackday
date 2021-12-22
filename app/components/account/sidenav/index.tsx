@@ -65,17 +65,17 @@ const SideNav: React.FC = () => {
   const sideNav = [
     {
       text: 'Personal Details',
-      href: 'account',
+      href: '/account',
       id: 'personal-details',
     },
     {
       text: 'Subscription & Billing',
-      href: 'account/subscription-and-billing',
+      href: '/account/subscription-and-billing',
       id: 'subscription-and-billing',
     },
     {
       text: 'Newsletters & Alerts',
-      href: 'account/newsletters-and-alerts',
+      href: '/account/newsletters-and-alerts',
       id: 'newsletters-and-alerts',
     },
   ]
