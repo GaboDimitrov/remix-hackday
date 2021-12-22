@@ -5,6 +5,7 @@ import invariant from "tiny-invariant";
 export type Post = {slug: string, title: string}
 
 export type UserAttributes = {
+  title: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -27,17 +28,20 @@ function isValidUserAttributes(
   return attributes?.firstName;
 }
 
-function isValidUpdateUserAddressAttributes(
-  attributes: any
-): attributes is Pick<UserAttributes, 'address'> {
-  return attributes?.town && attributes.postcode ;
-}
 
 function isValidUpdateUserNameAttributes(
   attributes: any
-): attributes is Pick<UserAttributes, 'firstName'| 'lastName' |  'email'> {
+): attributes is Pick<UserAttributes, 'firstName'| 'lastName' |  'email' | 'title' > {
   return attributes?.firstName && attributes.lastName && attributes.email ;
 }
+
+
+function isValidUpdateUserAddressAttributes(
+  attributes: any
+): attributes is Pick<UserAttributes, 'address'> {
+  return attributes?.town && attributes?.postcode ;
+}
+
 
 export async function getUser(slug?: string) { 
   const filepath = path.join(postsPath, (slug || 'user') + ".json");
@@ -53,7 +57,7 @@ export async function getUser(slug?: string) {
 export const updateName = async (attributes: Pick<UserAttributes, 'firstName'| 'lastName'| 'email'>) => {
   invariant(
     isValidUpdateUserNameAttributes(attributes),
-    `Form  is missing required attributes`
+    `form is missing required attributes`
   );
   
   const user = await getUser()
@@ -64,24 +68,26 @@ export const updateName = async (attributes: Pick<UserAttributes, 'firstName'| '
   );
 }
 
-// export async function getPosts() {
-//   const dir = await fs.readdir(postsPath);
-//   return Promise.all(
-//     dir.map(async filename => {
-//       const file = await fs.readFile(
-//         path.join(postsPath, filename)
-//       );
-//       const { attributes } = parseFrontMatter(
-//         file.toString()
-//       );
-//       invariant(
-//         isValidPostAttributes(attributes),
-//         `${filename} has bad meta data!`
-//       );
-//       return {
-//         slug: filename.replace(/\.md$/, ""),
-//         title: attributes.title
-//       };
-//     })
-//   );
-// }
+export const updateAddress = async (attributes: Pick<UserAttributes, 'address'>) => {
+  invariant(
+    isValidUpdateUserAddressAttributes(attributes),
+    `form is missing required attributes`
+  );
+
+  const user = await getUser()
+
+  await fs.writeFile(
+    path.join(postsPath, 'user' + ".json"),
+    JSON.stringify({...user, ...attributes})
+  );
+}
+
+
+export const updatePreferences = async (attributes: Pick<UserAttributes, 'commentingPreferences'>) => {
+  const user = await getUser()
+
+  await fs.writeFile(
+    path.join(postsPath, 'user' + ".json"),
+    JSON.stringify({...user, ...attributes})
+  );
+}
