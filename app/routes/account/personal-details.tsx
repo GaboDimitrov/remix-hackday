@@ -1,4 +1,4 @@
-import { Button, Cell, EmailInput, getMediaQueryFromTheme, Grid, styled, TextField, TextInput } from "newskit";
+import { Block, Button, Cell, EmailInput, getMediaQueryFromTheme, Grid, Label, styled, TextBlock, TextField, TextInput } from "newskit";
 import React from "react";
 import { ActionFunction, Form, redirect } from "remix";
 import { OffSetArea } from "~/components/account/common/offset-area";
@@ -12,19 +12,21 @@ export const action: ActionFunction = async ({ request }) => {
   const lastName = formData.get("lastName") as string;
   const email = formData.get("email") as string;
 
-   await updateName({ firstName, lastName, email });
-
-  return redirect("/account");
+  return await updateName({ firstName, lastName, email });
 };
 
 export default function PersonalDetails() {
   return <OffSetArea offset={true}>
     <Grid>
       <Cell xs={4}>
+      <Block spaceStack='space050'><TextBlock typographyPreset='editorialHeadline050'>Update your personal info</TextBlock></Block>
         <Form method="post">
-          <TextField type="text" name="firstName" />
-          <TextField type="text" name="lastName" />
-          <TextField type="text" name="email" />
+          <Label htmlFor='firstName'>First Name</Label>
+          <TextField id='firstName' type="text" name="firstName" />
+          <Label htmlFor='lastName'>Last Name</Label>
+          <TextField id='lastName' type="text" name="lastName" />
+          <Label htmlFor='Email'>Email Name</Label>
+          <TextField id='email' type="email" name="email" />
           <Button type="submit">Edit</Button>
       </Form>
       </Cell>

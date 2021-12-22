@@ -1,7 +1,8 @@
-import { Button, Cell, Grid, Checkbox, Stack } from "newskit";
+import { Button, Cell, Grid, Checkbox, Stack, TextBlock, Block } from "newskit";
 import React from "react";
 import { Form } from "remix";
 import { OffSetArea } from "~/components/account/common/offset-area";
+import { updatePreferences } from "~/user";
 
 export const action = async ({ request }) => {
     const formData = await request.formData();
@@ -11,15 +12,14 @@ export const action = async ({ request }) => {
     const other = formData.get("other");
 
   
-    // await editAlerts({ sms, email, other });
-  
-    return redirect("/account");
+    return await updatePreferences({ sms, email, other });
   };
 
 export default function NewslettersAndAlerts() {
     return <OffSetArea offset={true}>
     <Grid>
       <Cell xs={4}>
+      <Block spaceStack='space050'><TextBlock typographyPreset='editorialHeadline050'>Update your newsletter preferences</TextBlock></Block>
         <Form method="post">
             <Stack flow="vertical-left" spaceInline="space020">
                 <Checkbox label='sms' type="text" name="sms" />

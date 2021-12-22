@@ -71,6 +71,7 @@ export const updateName = async (attributes: Pick<UserAttributes, 'firstName'| '
     path.join(postsPath, 'user' + ".json"),
     JSON.stringify({...user, ...attributes})
   );
+  return {...user, ...attributes}
 }
 
 export const updateAddress = async (attributes: Pick<UserAttributes, 'address'>) => {
@@ -83,8 +84,9 @@ export const updateAddress = async (attributes: Pick<UserAttributes, 'address'>)
 
   await fs.writeFile(
     path.join(postsPath, 'user' + ".json"),
-    JSON.stringify({...user, ...attributes})
+    JSON.stringify({...user, address:{...user.address, ...attributes}})
   );
+  return {...user, ...attributes}
 }
 
 
@@ -93,6 +95,7 @@ export const updatePreferences = async (attributes: Pick<UserAttributes, 'commen
 
   await fs.writeFile(
     path.join(postsPath, 'user' + ".json"),
-    JSON.stringify({...user, ...attributes})
+    JSON.stringify({...user, commentingPreferences: {...user.commentingPreferences, ...attributes}})
   );
+  return {...user, ...attributes}
 }

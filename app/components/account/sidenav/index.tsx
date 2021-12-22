@@ -7,6 +7,8 @@ import {
   MenuItem,
   Block,
   Scroll,
+  Stack,
+  TextBlock,
 } from 'newskit'
 export const navigationSecondaryHeight = '48px'
 import { useLocation } from 'react-router-dom'
@@ -130,7 +132,11 @@ const SideNav: React.FC = (user: any) => {
             </StyledMenu>
           )}
         </StyledScroll>
-        {JSON.stringify(user, null, 2)}
+        <Stack stackDistribution='space-between' flow='vertical-center' spaceInline="space020">
+          <TextBlock>{user.user.firstName}</TextBlock>
+          <TextBlock>{user.user.lastName}</TextBlock>
+          <TextBlock>{user.user.address.town} {user.user.address.postcode}</TextBlock>
+        </Stack>
       </Block>
     </NavContainer>
   )
