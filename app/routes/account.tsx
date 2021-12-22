@@ -3,12 +3,12 @@ import React from "react";
 import { Outlet, useLoaderData } from "remix";
 import Header from "~/components/account/header";
 import Sidenav from "~/components/account/sidenav";
-import { getUser } from "~/user";
+import { getUserSlow } from "~/user";
 
 export const loader = () => {
-  const user = getUser();
+  const user = getUserSlow();
 
-  return user
+  return user 
 }
 
 const NavWrapper = styled(Block)`

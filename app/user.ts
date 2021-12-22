@@ -42,8 +42,13 @@ function isValidUpdateUserAddressAttributes(
   return attributes?.town && attributes?.postcode ;
 }
 
+export const getUserSlow = async () => {
+  await new Promise(resolve => setTimeout(async () => { resolve(true) }, 2000))
+  return await getUser()
+}
 
-export async function getUser(slug?: string) { 
+
+export async function getUser(slug?: string) {
   const filepath = path.join(postsPath, (slug || 'user') + ".json");
   const file = await fs.readFile(filepath);
   const user = JSON.parse(file.toString());
