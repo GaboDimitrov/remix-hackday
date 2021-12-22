@@ -8,7 +8,7 @@ import { FallBack } from '../grid/FallBack'
 import { Lead  } from '../grid/Lead'
 import { SectionRow  } from '../grid/SectionRow'
 
-const sliceBlockBuilder = (slice: Slice, collection: CollectionBlock) => {
+const sliceBlockBuilder = (slice: Slice, collection: CollectionBlock, isIndexPage?: boolean) => {
   const sectionURL = collection?.link?.url || '/uncategorized'
   /* add layout to case statments when ready */
   const sliceTypes = {
@@ -18,7 +18,7 @@ const sliceBlockBuilder = (slice: Slice, collection: CollectionBlock) => {
             slice={slice}
             collection={collection}
             sectionURL={sectionURL}
-            showTitle={true}
+            showTitle={!isIndexPage}
           />
     ),
     SECONDARY_4_ODD: (
@@ -27,7 +27,7 @@ const sliceBlockBuilder = (slice: Slice, collection: CollectionBlock) => {
             collection={collection}
             sectionURL={sectionURL}
             isDarkBackground
-            addTopSpace={true}
+            addTopSpace={!isIndexPage}
             titleBarColour={
               (true &&
                 `${getColorCssFromTheme('color', 'transparent')}`) as string
@@ -41,13 +41,14 @@ const sliceBlockBuilder = (slice: Slice, collection: CollectionBlock) => {
   return sliceTypes[slice.name] || sliceTypes.default
 }
 
-const ArticleSlice: React.FC<{ slice: Slice; collection: CollectionBlock }> = ({
+const ArticleSlice: React.FC<{ slice: Slice; collection: CollectionBlock, isIndexPage?: boolean }> = ({
   slice,
   collection,
+  isIndexPage
 }) => (
   <>
     <Block spaceStack="space070" />
-    {sliceBlockBuilder(slice, collection)}
+    {sliceBlockBuilder(slice, collection, isIndexPage)}
   </>
 )
 

@@ -21,7 +21,7 @@ const SectionPage: React.FC<{
       <Cell xs={12} md={10} mdOffset={1} data-testid="SectionCell">
         {isIndexPage && <SectionTitleBar title={page.title} />}
         {Array.isArray(page.body) &&
-          page.body.map((block) => pageBlock(block.type as string)(block))}
+          page.body.map((block) => pageBlock(block.type as string, isIndexPage)(block))}
       </Cell>
     </LayoutTemplate>
 )

@@ -5,10 +5,10 @@ import {
 } from '../global-types'
 import ArticleSlice from './ArticleSlice'
 
-const collectionSliceOptions = (type: string) => {
+const collectionSliceOptions = (type: string, isIndexPage?: boolean) => {
   const sliceTypes = {
     slice: (slice: Slice, collection: Collection, i: number) => (
-      <ArticleSlice slice={slice} collection={collection} key={i} />
+      <ArticleSlice slice={slice} collection={collection} key={i} isIndexPage={isIndexPage}/>
     ),
     'topic-author-slice': () => null,
     default: () => null,
@@ -17,9 +17,9 @@ const collectionSliceOptions = (type: string) => {
   return sliceTypes[type] || sliceTypes.default
 }
 
-const CollectionBlock = (collection: Collection) =>
+const CollectionBlock = (collection: Collection, isIndexPage?: boolean) =>
   collection.children.map((slice, i) =>
-    collectionSliceOptions(slice.type)(slice, collection, i)
+    collectionSliceOptions(slice.type, isIndexPage)(slice, collection, i)
   )
 
 export default CollectionBlock

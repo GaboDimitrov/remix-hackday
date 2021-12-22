@@ -12,5 +12,5 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function PostSlug() {
   const page = useLoaderData();
-  return <SectionPage page={page}/>
+  return <SectionPage page={page} isIndexPage={true}/>
 }

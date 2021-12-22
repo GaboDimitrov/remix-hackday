@@ -5,9 +5,9 @@ import { CollectionBlock as Collection } from '../../helpers/global-types'
   See the schema for the full list
 */
 
-const pageBlock = (type: string) => {
+const pageBlock = (type: string, isIndexPage?: boolean) => {
   const blockTypes = {
-    collection: (collection: Collection) => CollectionBlock(collection),
+    collection: (collection: Collection) => CollectionBlock(collection, isIndexPage),
     image: () => null,
     paragraph: () => null,
     tweet: () => null,
