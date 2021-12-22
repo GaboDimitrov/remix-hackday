@@ -1,9 +1,15 @@
 import { Block, getMediaQueryFromTheme, styled } from "newskit";
 import React from "react";
-import { Outlet } from "remix";
+import { Outlet, useLoaderData } from "remix";
 import Header from "~/components/account/header";
 import Sidenav from "~/components/account/sidenav";
+import { getUser } from "~/user";
 
+export const loader = () => {
+  const user = getUser();
+
+  return user
+}
 
 const NavWrapper = styled(Block)`
   width: 100%;
@@ -41,31 +47,16 @@ const StickyDiv = styled.div`
 `
 
 export default function Account() {
+  const user = useLoaderData();
   return <div>
     <NavWrapper>
       <Header />
     </NavWrapper>
     <LayoutWrapper>
           <StickyDiv>
-            <Sidenav />
+            <Sidenav user={user}/>
           </StickyDiv>
-          {/* <OffSetArea offset={+sidebar}>
-            <LayoutGrid
-              hasSidebar={sidebar}
-              margin={{
-                xsMargin: 'space050',
-                smMargin: 'space060',
-                mdMargin: 'space000',
-              }}
-              gutter={{
-                xsColumnGutter: 'space020',
-                smColumnGutter: 'space040',
-              }}
-            >
-              {children}
-            </LayoutGrid>
-            {footer && <FooterWrapper />}
-          </OffSetArea> */}
+       
     </LayoutWrapper>
     <main><Outlet /></main>
   </div>

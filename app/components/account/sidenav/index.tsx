@@ -8,10 +8,8 @@ import {
   Block,
   Scroll,
 } from 'newskit'
-// import { useAccountContext } from '../../../context'
 export const navigationSecondaryHeight = '48px'
 import { useLocation } from 'react-router-dom'
-import { Slugger } from 'marked'
 
 const NavContainer = styled.div<{ backgroundColor?: string | undefined }>`
   overflow: auto;
@@ -61,8 +59,7 @@ const StyledMenuItem = styled(MenuItem)`
   white-space: nowrap;
 `
 
-const SideNav: React.FC = () => {
-//   const {sideNavSelected, sideNavOverrides } = useAccountContext()
+const SideNav: React.FC = (user: any) => {
 
   const sideNav = [
     {
@@ -133,6 +130,7 @@ const SideNav: React.FC = () => {
             </StyledMenu>
           )}
         </StyledScroll>
+        {JSON.stringify(user, null, 2)}
       </Block>
     </NavContainer>
   )

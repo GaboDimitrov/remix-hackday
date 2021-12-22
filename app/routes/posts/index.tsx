@@ -1,8 +1,7 @@
 import { Link, useLoaderData } from "remix";
-import { getPosts, Post } from "~/post";
+import {  Post } from "~/user";
 
 export const loader = () => {
-  return getPosts();
 };
 
 const Posts: React.FC = () => {

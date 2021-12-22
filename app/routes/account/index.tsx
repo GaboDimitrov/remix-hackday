@@ -1,6 +1,6 @@
-export const loader = () => {
-    // return getUser();
-  };
+// export const loader = () => {
+//     // return getUser();
+//   };
 
 export default function Account() {
 

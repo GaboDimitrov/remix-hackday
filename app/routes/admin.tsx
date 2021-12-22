@@ -1,8 +1,8 @@
 import { Outlet, Link, useLoaderData } from "remix";
 import {Headline} from 'newskit';
 
-import { getPosts } from "~/post";
-import type { Post } from "~/post";
+import { getUser } from "~/user";
+import type { Post } from "~/user";
 import adminStyles from "~/styles/admin.css";
 
 export const links = () => {
@@ -10,7 +10,7 @@ export const links = () => {
 };
 
 export const loader = () => {
-  return getPosts();
+  return getUser();
 };
 
 export default function Admin() {

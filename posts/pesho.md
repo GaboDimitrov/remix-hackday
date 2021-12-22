@@ -1,5 +1,0 @@
----
-title: gosho
----
-
-asdasd
