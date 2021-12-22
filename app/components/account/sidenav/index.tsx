@@ -10,6 +10,7 @@ import {
 } from 'newskit'
 // import { useAccountContext } from '../../../context'
 export const navigationSecondaryHeight = '48px'
+import { useLocation } from 'react-router-dom'
 
 const NavContainer = styled.div<{ backgroundColor?: string | undefined }>`
   overflow: auto;
@@ -80,6 +81,8 @@ const SideNav: React.FC = () => {
     },
   ]
 
+  const location = useLocation();
+
   return (
     <NavContainer
       data-testid="NavigationSecondary"
@@ -92,7 +95,6 @@ const SideNav: React.FC = () => {
       />
       <Block>
         <StyledScroll
-          tabIndex={undefined}
           overrides={{
             overlays: {
               size: {
@@ -108,7 +110,7 @@ const SideNav: React.FC = () => {
                 <StyledMenuItem
                   href={href}
                   key={id}
-                  // selected={sideNavSelected === id}
+                  selected={location.pathname.indexOf(href) > -1}
                   overrides={{
                     typographyPreset: 'utilityButton030',
                     stylePreset: {

@@ -1,68 +1,33 @@
-import { getMediaQueryFromTheme, Grid, styled } from "newskit";
+import { Button, Cell, EmailInput, getMediaQueryFromTheme, Grid, styled, TextInput } from "newskit";
 import React from "react";
-import Sidenav from "~/components/account/sidenav";
+import { Form, redirect } from "remix";
+import { OffSetArea } from "~/components/account/common/offset-area";
 
-const LayoutWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  flex-direction: column;
-  ${getMediaQueryFromTheme('lg')} {
-    flex-direction: initial;
-  }
-`
 
-const StickyDiv = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  ${getMediaQueryFromTheme('md')} {
-    top: 80px;
-  }
-  ${getMediaQueryFromTheme('lg')} {
-    width: initial;
-    bottom: 0;
-  }
-`
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+
+  const firstName = formData.get("firstName");
+  const lastName = formData.get("lastName");
+  const email = formData.get("email");
+
+
+  // await editName({ firstName, lastName, email });
+
+  return redirect("/account");
+};
 
 export default function PersonalDetails() {
-  return <LayoutWrapper>
-  <StickyDiv>
-    <Sidenav />
-  </StickyDiv>
-  {/* <OffSetArea offset={+sidebar}>
-    <LayoutGrid
-      hasSidebar={sidebar}
-      margin={{
-        xsMargin: 'space050',
-        smMargin: 'space060',
-        mdMargin: 'space000',
-      }}
-      gutter={{
-        xsColumnGutter: 'space020',
-        smColumnGutter: 'space040',
-      }}
-    >
-      {children}
-    </LayoutGrid>
-    {footer && <FooterWrapper />}
-  </OffSetArea> */}
-</LayoutWrapper>
-  
-//   <OffSetArea offset={true}><Grid
-//   // margin={{
-//   //   xsMargin: 'space050',
-//   //   smMargin: 'space060',
-//   //   mdMargin: 'space000',
-//   // }}
-//   // gutter={{
-//   //   xsColumnGutter: 'space020',
-//   //   smColumnGutter: 'space040',
-//   // }}
-// >
-//   asd
-// </Grid>
-// </OffSetArea>
+  return <OffSetArea offset={true}>
+    <Grid>
+      <Cell xs={4}>
+        <Form method="post">
+          <TextInput label='First Name' type="text" name="firstName" />
+          <TextInput label='Last Name' type="text" name="lastName" />
+          <EmailInput label='Email' type="text" name="email" />
+          <Button type="submit">Edit</Button>
+      </Form>
+      </Cell>
+    </Grid>
+  </OffSetArea>
 }
