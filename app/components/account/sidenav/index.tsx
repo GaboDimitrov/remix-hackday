@@ -66,8 +66,13 @@ const SideNav: React.FC = () => {
 
   const sideNav = [
     {
-      text: 'Personal Details',
+      text: 'Account',
       href: '/account',
+      id: 'account',
+    },
+    {
+      text: 'Personal Details',
+      href: '/account/personal-details',
       id: 'personal-details',
     },
     {
