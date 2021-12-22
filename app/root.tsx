@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration
 } from "remix";
+import {ThemeProvider, Headline, newskitLightTheme} from 'newskit';
 import type { MetaFunction } from "remix";
 
 export const meta: MetaFunction = () => {
@@ -23,11 +24,13 @@ export default function App() {
         <Links />
       </head>
       <body>
+      <ThemeProvider theme={newskitLightTheme}>
         <Outlet />
-        <Link to="/posts">Posts</Link>
+        <Link to="/posts"><Headline kickerText="Our">Posts</Headline></Link>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
+        </ThemeProvider>
       </body>
     </html>
   );

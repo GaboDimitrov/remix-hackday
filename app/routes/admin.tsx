@@ -1,4 +1,5 @@
 import { Outlet, Link, useLoaderData } from "remix";
+import {Headline} from 'newskit';
 
 import { getPosts } from "~/post";
 import type { Post } from "~/post";
@@ -17,7 +18,7 @@ export default function Admin() {
   return (
     <div className="admin">
       <nav>
-        <h1>Admin</h1>
+        <Headline kickerText='My'>Admin</Headline>
         <ul>
           {posts.map(post => (
             <li key={post.slug}>
