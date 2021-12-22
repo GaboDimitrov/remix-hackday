@@ -1,5 +1,4 @@
-import React from 'react'
-import { NextLink } from '@newskit-render/shared-components'
+import { Link } from "remix"
 
 const NavLink = ({
   href,
@@ -10,17 +9,12 @@ const NavLink = ({
   href: string
   ariaLabel?: string
 }) => (
-  <NextLink
-    type="standalone"
-    overrides={{
-      typographyPreset: 'utilityMeta020',
-      stylePreset: 'linkStandaloneInverse',
-    }}
-    href={href}
+  <Link
+    to={href}
     aria-label={ariaLabel}
   >
     {buttonText}
-  </NextLink>
+  </Link>
 )
 
 export default NavLink

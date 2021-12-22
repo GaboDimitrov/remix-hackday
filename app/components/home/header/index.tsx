@@ -42,40 +42,10 @@ const StyledHeader = styled.div`
   }
 `
 
-const pastDueBanner = {
-  firstNotice: {
-    title: "We haven't been able to take payment",
-    text: 'You may need to update your payment details to keep your subscription.',
-    button: 'Update payment details',
-  },
-  secondNotice: {
-    title: 'Act now to keep your subscription',
-    text: 'We’ve tried several times, but haven’t been able to take payment. Please update your payment details to keep your subscription.',
-    button: 'Update payment details',
-  },
-  terminated: {
-    title: 'Your subscription has been terminated',
-    text: 'We didn’t receive payment for your subscription. To reactivate it, please call 0800 018 5177.',
-  },
-  cancelled: {
-    title: 'Your subscription has been cancelled.',
-    text: 'You’ll no longer have access to subscription benefits. To re-activate call 0800 555 1234.',
-  },
-  treshold: {
-    firstNotice: 26,
-    secondNotice: 30,
-  },
-}
-
 type NavigationProps = {
   show: boolean
 }
 
-const BannerContainer = styled(Block)`
-  position: sticky;
-  top: 0;
-  z-index: 1;
-`
 
 const NavigationContainer = styled.div<NavigationProps>`
   position: fixed;
@@ -178,19 +148,19 @@ const Header: React.FC = () => {
                     )}
                     <NavButton
                       buttonText="Section One"
-                      href="/section-one"
+                      href="/home/section-one"
                       isMobile={false}
                       ariaLabel="Section One Link"
                     />
                     <NavButton
                       buttonText="Section Two"
-                      href="/section-two"
+                      href="/home/section-two"
                       isMobile={false}
                       ariaLabel="Section Two Link"
                     />
                     <NavButton
                       buttonText="Section Three"
-                      href="/section-three"
+                      href="/home/section-three"
                       isMobile={false}
                       ariaLabel="Section Three Link"
                     />
@@ -216,7 +186,6 @@ const Header: React.FC = () => {
           </Cell>
         </MainGrid>
       </StyledHeader>
-     
     </>
   )
 }
