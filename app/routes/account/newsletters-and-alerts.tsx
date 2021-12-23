@@ -1,8 +1,8 @@
 import { Button, Cell, Grid, Checkbox, Stack, TextBlock, Block } from 'newskit';
 import React from 'react';
-import { Form } from 'remix';
+import { Form, useLoaderData } from 'remix';
 import { OffSetArea } from '~/components/account/common/offset-area';
-import { updatePreferences } from '~/user';
+import { getUserSlow, updatePreferences } from '~/user';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -14,7 +14,14 @@ export const action = async ({ request }) => {
   return await updatePreferences({ sms, email, other });
 };
 
+export const loader = () => {
+  const user = getUserSlow();
+
+  return user;
+};
+
 export default function NewslettersAndAlerts() {
+  const { commentingPreferences } = useLoaderData();
   return (
     <OffSetArea offset={true}>
       <Grid>
@@ -24,9 +31,9 @@ export default function NewslettersAndAlerts() {
           </Block>
           <Form method="post">
             <Stack flow="vertical-left" spaceInline="space020">
-              <Checkbox label="sms" type="text" name="sms" />
-              <Checkbox label="email" type="text" name="email" />
-              <Checkbox label="other" type="text" name="other" />
+              <Checkbox label="sms" name="sms" defaultChecked={commentingPreferences.sms} />
+              <Checkbox label="email" name="email" defaultChecked={commentingPreferences.email} />
+              <Checkbox label="other" name="other" defaultChecked={commentingPreferences.other} />
               <Button type="submit">Edit</Button>
             </Stack>
           </Form>

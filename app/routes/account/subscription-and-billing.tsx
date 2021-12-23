@@ -1,8 +1,8 @@
 import { Grid, Cell, TextField, Button, Label, Block, TextBlock } from 'newskit';
 import React from 'react';
-import { Form, redirect } from 'remix';
+import { Form, redirect, useLoaderData } from 'remix';
 import { OffSetArea } from '~/components/account/common/offset-area';
-import { updateAddress } from '~/user';
+import { getUserSlow, updateAddress } from '~/user';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -13,7 +13,14 @@ export const action = async ({ request }) => {
   return await updateAddress({ town, postcode });
 };
 
+export const loader = () => {
+  const user = getUserSlow();
+
+  return user;
+};
+
 export default function SubscriptionAndBilling() {
+  const { address } = useLoaderData();
   return (
     <OffSetArea offset={true}>
       <Grid>
@@ -23,9 +30,9 @@ export default function SubscriptionAndBilling() {
           </Block>
           <Form method="post">
             <Label htmlFor="town">Town</Label>
-            <TextField id="town" type="text" name="town" />
+            <TextField id="town" type="text" name="town" defaultValue={address.town} />
             <Label htmlFor="postcode">Postcode</Label>
-            <TextField id="postcode" type="text" name="postcode" />
+            <TextField id="postcode" type="text" name="postcode" defaultValue={address.postcode} />
             <Button type="submit">Edit</Button>
           </Form>
         </Cell>

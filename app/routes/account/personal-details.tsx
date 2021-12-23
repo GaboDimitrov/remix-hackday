@@ -12,9 +12,9 @@ import {
   TextInput,
 } from 'newskit';
 import React from 'react';
-import { ActionFunction, Form, redirect } from 'remix';
+import { ActionFunction, Form, redirect, useLoaderData } from 'remix';
 import { OffSetArea } from '~/components/account/common/offset-area';
-import { updateName } from '~/user';
+import { getUserSlow, updateName } from '~/user';
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -26,7 +26,15 @@ export const action: ActionFunction = async ({ request }) => {
   return await updateName({ firstName, lastName, email });
 };
 
+export const loader = () => {
+  const user = getUserSlow();
+
+  return user;
+};
+
 export default function PersonalDetails() {
+  const user = useLoaderData();
+
   return (
     <OffSetArea offset={true}>
       <Grid>
@@ -36,11 +44,11 @@ export default function PersonalDetails() {
           </Block>
           <Form method="post">
             <Label htmlFor="firstName">First Name</Label>
-            <TextField id="firstName" type="text" name="firstName" />
+            <TextField id="firstName" type="text" name="firstName" defaultValue={user.firstName} />
             <Label htmlFor="lastName">Last Name</Label>
-            <TextField id="lastName" type="text" name="lastName" />
-            <Label htmlFor="Email">Email Name</Label>
-            <TextField id="email" type="email" name="email" />
+            <TextField id="lastName" type="text" name="lastName" defaultValue={user.lastName} />
+            <Label htmlFor="Email">Email </Label>
+            <TextField id="email" type="email" name="email" defaultValue={user.email} />
             <Button type="submit">Edit</Button>
           </Form>
         </Cell>

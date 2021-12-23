@@ -46,6 +46,10 @@ const StickyDiv = styled.div`
   }
 `;
 
+const OutletWrapper = styled.div`
+  margin-top: 50px;
+`;
+
 export default function Account() {
   const user = useLoaderData();
   return (
@@ -59,7 +63,9 @@ export default function Account() {
         </StickyDiv>
       </LayoutWrapper>
       <main>
-        <Outlet />
+        <OutletWrapper>
+          <Outlet />
+        </OutletWrapper>
       </main>
     </div>
   );
