@@ -3,10 +3,10 @@ import React from 'react';
 import { Outlet, useLoaderData } from 'remix';
 import Header from '~/components/account/header';
 import Sidenav from '~/components/account/sidenav';
-import { getUserSlow } from '~/user';
+import { getUser } from '~/user';
 
 export const loader = () => {
-  const user = getUserSlow();
+  const user = getUser();
 
   return user;
 };

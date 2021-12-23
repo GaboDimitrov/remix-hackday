@@ -37,11 +37,6 @@ function isValidUpdateUserAddressAttributes(attributes: any): attributes is Pick
 }
 
 export const getUserSlow = async () => {
-  await new Promise((resolve) =>
-    setTimeout(async () => {
-      resolve(true);
-    }, 2000)
-  );
   return await getUser();
 };
 
