@@ -59,7 +59,7 @@ const StyledMenuItem = styled(MenuItem)`
   white-space: nowrap;
 `;
 
-const SideNav: React.FC = (user: any) => {
+const SideNav: React.FC<{user: any}> = (user) => {
   const sideNav = [
     {
       text: 'Account',
