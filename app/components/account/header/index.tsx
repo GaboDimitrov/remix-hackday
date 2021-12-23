@@ -19,7 +19,6 @@ import { RemixLink } from '../common/Link';
 
 const NavContainer = styled.header`
   ${getColorCssFromTheme('backgroundColor', 'interfaceBrand010')};
-  width: 100%;
   ${getSizingCssFromTheme('padding', 'sizing050')};
 `;
 
@@ -80,12 +79,6 @@ const renderLinks = (topNav: HeaderInterface[]) => {
 };
 const Header = (): JSX.Element => {
   const topNav = [
-    {
-      text: 'Go to newskit.co.uk',
-      link: '/',
-      icon: <IconFilledChevronRight overrides={{ size: { md: 'iconSize020', xs: 'iconSize010' } }} />,
-      ariaLabel: 'Go to homepage',
-    },
     {
       text: 'Home',
       link: '/home',
