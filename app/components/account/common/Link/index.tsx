@@ -1,14 +1,9 @@
-import React from 'react'
-import {Link} from 'remix'
-import { LinkStandalone, Link as LinkInline } from 'newskit'
-import { LinkProps } from './types'
+import React from 'react';
+import { Link } from 'remix';
+import { LinkStandalone, Link as LinkInline } from 'newskit';
+import { LinkProps } from './types';
 
-export const RemixLink: React.FC<LinkProps> = ({
-  href,
-  children,
-  type,
-  ...rest
-}) => (
+export const RemixLink: React.FC<LinkProps> = ({ href, children, type, ...rest }) => (
   <>
     {type === 'standalone' && (
       <Link to={href}>
@@ -26,4 +21,4 @@ export const RemixLink: React.FC<LinkProps> = ({
       </Link>
     )}
   </>
-)
+);

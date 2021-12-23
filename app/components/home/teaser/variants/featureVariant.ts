@@ -1,4 +1,4 @@
-import { VariantsObject } from '../variant-types'
+import { VariantsObject } from '../variant-types';
 
 const featureVertical: VariantsObject = {
   layout: 'vertical',
@@ -37,6 +37,6 @@ const featureVertical: VariantsObject = {
       xs: 'space030',
     },
   },
-}
+};
 
-export default featureVertical
+export default featureVertical;

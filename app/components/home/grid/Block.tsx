@@ -1,13 +1,8 @@
-import React from 'react'
-import {
-  ArticleTeaser,
-  Media,
-  SliceBlock,
-  TeaserSummary,
-} from '../global-types'
-import { teaserURL, teaserSummary, getMedia } from '../section/sectionUtils'
-import Teaser from '../teaser'
-import { VariantsName } from '../teaser/teaserVariants'
+import React from 'react';
+import { ArticleTeaser, Media, SliceBlock, TeaserSummary } from '../global-types';
+import { teaserURL, teaserSummary, getMedia } from '../section/sectionUtils';
+import Teaser from '../teaser';
+import { VariantsName } from '../teaser/teaserVariants';
 
 export const getBlockProps = (sliceBlock: SliceBlock) => {
   // Temp remove later
@@ -24,24 +19,18 @@ export const getBlockProps = (sliceBlock: SliceBlock) => {
     default: {
       headline: `Unknown slice block - ${sliceBlock.type}`,
     },
-  }
+  };
 
-  return blockTypes[sliceBlock.type] || blockTypes.default
-}
+  return blockTypes[sliceBlock.type] || blockTypes.default;
+};
 
-export const getBlock = (
-  sliceBlock: SliceBlock,
-  variant: VariantsName = 'base'
-) => {
-  const { headline, summary, media } = ('article' in sliceBlock &&
-    sliceBlock.article) as ArticleTeaser
+export const getBlock = (sliceBlock: SliceBlock, variant: VariantsName = 'base') => {
+  const { headline, summary, media } = ('article' in sliceBlock && sliceBlock.article) as ArticleTeaser;
   const blockTypes = {
     'article-block': (
       <Teaser
         variant={variant}
-        url={teaserURL(
-          ('article' in sliceBlock && sliceBlock.article) as ArticleTeaser
-        )}
+        url={teaserURL(('article' in sliceBlock && sliceBlock.article) as ArticleTeaser)}
         media={getMedia(media as Media)}
         title={headline as string}
         teaser={teaserSummary(summary as TeaserSummary)}
@@ -74,6 +63,6 @@ export const getBlock = (
         title={`Unknown slice block - ${sliceBlock.type}`}
       />
     ),
-  }
-  return blockTypes[sliceBlock.type] || blockTypes.default
-}
+  };
+  return blockTypes[sliceBlock.type] || blockTypes.default;
+};

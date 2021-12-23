@@ -1,4 +1,4 @@
-import { createTheme, newskitLightTheme, newskitDarkTheme } from 'newskit'
+import { createTheme, newskitLightTheme, newskitDarkTheme } from 'newskit';
 
 export const renderCustomLightTheme = createTheme({
   name: 'render-custom-light-theme',
@@ -44,7 +44,7 @@ export const renderCustomLightTheme = createTheme({
       },
     },
   },
-})
+});
 
 export const renderCustomDarkTheme = createTheme({
   name: 'render-custom-dark-theme',
@@ -63,4 +63,4 @@ export const renderCustomDarkTheme = createTheme({
       },
     },
   },
-})
+});

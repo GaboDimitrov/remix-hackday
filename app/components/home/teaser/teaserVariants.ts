@@ -1,7 +1,7 @@
-import titleTeaserVertical from './variants/titleTeaserVariant'
-import titleVertical from './variants/titleVertical'
-import featureVertical from './variants/featureVariant'
-import { VariantsObject } from './variant-types'
+import titleTeaserVertical from './variants/titleTeaserVariant';
+import titleVertical from './variants/titleVertical';
+import featureVertical from './variants/featureVariant';
+import { VariantsObject } from './variant-types';
 
 const base: VariantsObject = {
   layout: 'vertical',
@@ -17,15 +17,15 @@ const base: VariantsObject = {
     typographyPreset: {},
     spaceStack: 'space020',
   },
-}
+};
 
 const teaserVariants = {
   base,
   titleTeaserVertical,
   titleVertical,
   featureVertical,
-}
+};
 
-export default teaserVariants
+export default teaserVariants;
 
-export type VariantsName = keyof typeof teaserVariants
+export type VariantsName = keyof typeof teaserVariants;

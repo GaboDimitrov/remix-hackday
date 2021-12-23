@@ -1,6 +1,6 @@
-import { ArticleSlice } from '../global-types'
+import { ArticleSlice } from '../global-types';
 
 export type LayoutProps = {
-  slice: ArticleSlice
-  sectionURL?: string
-}
+  slice: ArticleSlice;
+  sectionURL?: string;
+};

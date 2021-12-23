@@ -1,41 +1,26 @@
-import React from 'react'
-import {
-  TitleBar,
-  styled,
-  getColorCssFromTheme,
-  Block,
-  BlockProps,
-} from 'newskit'
+import React from 'react';
+import { TitleBar, styled, getColorCssFromTheme, Block, BlockProps } from 'newskit';
 
 type StyledTitleBarBlockProps = {
-  colour?: string
-} & BlockProps
+  colour?: string;
+} & BlockProps;
 
 const StyledTitleBarBlock = styled(Block)<StyledTitleBarBlockProps>`
   ${(props) =>
     props.colour
       ? getColorCssFromTheme('background', props.colour)
       : getColorCssFromTheme('background', 'inkBrand010')};
-`
+`;
 
 type SectionTitleBarProps = {
-  title: string
-  actionItem?: React.ComponentType
-  colour?: string
-  stylePreset?: string
-}
+  title: string;
+  actionItem?: React.ComponentType;
+  colour?: string;
+  stylePreset?: string;
+};
 
-const SectionTitleBar: React.FC<SectionTitleBarProps> = ({
-  title,
-  actionItem,
-  colour,
-  stylePreset,
-}) => (
-  <StyledTitleBarBlock
-    colour={colour}
-    spaceStack="space060"
-    data-testid="SectionTitleBar"
-  >
+const SectionTitleBar: React.FC<SectionTitleBarProps> = ({ title, actionItem, colour, stylePreset }) => (
+  <StyledTitleBarBlock colour={colour} spaceStack="space060" data-testid="SectionTitleBar">
     <TitleBar
       actionItem={actionItem}
       overrides={{
@@ -52,6 +37,6 @@ const SectionTitleBar: React.FC<SectionTitleBarProps> = ({
       {title}
     </TitleBar>
   </StyledTitleBarBlock>
-)
+);
 
-export default SectionTitleBar
+export default SectionTitleBar;

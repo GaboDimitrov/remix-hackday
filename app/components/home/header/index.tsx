@@ -9,15 +9,15 @@ import {
   Stack,
   Block,
   IconFilledMenu,
-} from 'newskit'
+} from 'newskit';
 
-import { MainGrid } from '../grid/MainGrid'
-import NewsKitLogoFull from '../common/NewskitLogo'
-import NewsKitLogoShort from '../common/NewskitLogoShort'
-import NavLink from '../common/NavLink'
-import { Link } from 'remix'
+import { MainGrid } from '../grid/MainGrid';
+import NewsKitLogoFull from '../common/NewskitLogo';
+import NewsKitLogoShort from '../common/NewskitLogoShort';
+import NavLink from '../common/NavLink';
+import { Link } from 'remix';
 
-export const headerSize = 'sizing090'
+export const headerSize = 'sizing090';
 
 const StyledHeader = styled.div`
   ${getSizingCssFromTheme('height', headerSize)}
@@ -40,12 +40,11 @@ const StyledHeader = styled.div`
     ${getSizingCssFromTheme('paddingLeft', 'sizing090')};
     ${getSizingCssFromTheme('paddingRight', 'sizing090')};
   }
-`
+`;
 
 type NavigationProps = {
-  show: boolean
-}
-
+  show: boolean;
+};
 
 const NavigationContainer = styled.div<NavigationProps>`
   position: fixed;
@@ -69,7 +68,7 @@ const NavigationContainer = styled.div<NavigationProps>`
     top: initial;
     z-index: 1;
   }
-`
+`;
 
 const Navigation = styled.div`
   display: flex;
@@ -82,7 +81,7 @@ const Navigation = styled.div`
     justify-content: flex-end;
     flex-direction: row;
   }
-`
+`;
 
 const NavButton = ({
   buttonText,
@@ -90,11 +89,11 @@ const NavButton = ({
   isMobile,
   ariaLabel,
 }: {
-  buttonText: string
-  href: string
-  isMobile: boolean
-  isLast?: boolean
-  ariaLabel?: string
+  buttonText: string;
+  href: string;
+  isMobile: boolean;
+  isLast?: boolean;
+  ariaLabel?: string;
 }) => (
   <Block
     as="span"
@@ -106,26 +105,17 @@ const NavButton = ({
   >
     <NavLink href={href} ariaLabel={ariaLabel} buttonText={buttonText} />
   </Block>
-)
+);
 
 const Header: React.FC = () => {
-  const mobileMenuControl = () => {
-  }
+  const mobileMenuControl = () => {};
   return (
     <>
       <StyledHeader>
         <MainGrid>
           <Cell xs={12}>
-            <Stack
-              flow="horizontal-center"
-              stackDistribution="space-between"
-              wrap="nowrap"
-            >
-              <Link
-                type="standalone"
-                to="/"
-                aria-label="Home Page"
-              >
+            <Stack flow="horizontal-center" stackDistribution="space-between" wrap="nowrap">
+              <Link type="standalone" to="/" aria-label="Home Page">
                 <Visible md lg xl>
                   <NewsKitLogoFull color="white" size="sizing120" />
                 </Visible>
@@ -133,19 +123,10 @@ const Header: React.FC = () => {
                   <NewsKitLogoShort color="white" size="sizing120" />
                 </Visible>
               </Link>
-              <Stack
-                flow="horizontal-center"
-                stackDistribution="flex-end"
-                wrap="nowrap"
-              >
-                <NavigationContainer  show={true}>
+              <Stack flow="horizontal-center" stackDistribution="flex-end" wrap="nowrap">
+                <NavigationContainer show={true}>
                   <Navigation>
-                    {(
-                      <Block
-                        spaceStack="space050"
-                        data-testid="mobile-block-space"
-                      />
-                    )}
+                    {<Block spaceStack="space050" data-testid="mobile-block-space" />}
                     <NavButton
                       buttonText="Section One"
                       href="/home/section-one"
@@ -187,7 +168,7 @@ const Header: React.FC = () => {
         </MainGrid>
       </StyledHeader>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,8 +1,4 @@
-import {
-  Media,
-  ArticleTeaser,
-  TeaserCategory,
-} from '../global-types'
+import { Media, ArticleTeaser, TeaserCategory } from '../global-types';
 
 export const getMedia = (media?: Media) => {
   if (!media) {
@@ -10,7 +6,7 @@ export const getMedia = (media?: Media) => {
       src: '',
       alt: '',
       loadingAspectRatio: '',
-    }
+    };
   }
   return 'crop' in media
     ? {
@@ -22,11 +18,10 @@ export const getMedia = (media?: Media) => {
         src: media.posterImage?.crop?.url || '',
         alt: media.posterImage?.crop?.alt || '',
         loadingAspectRatio: media?.posterImage?.crop?.aspectRatio || '',
-      }
-}
+      };
+};
 
-export const teaserSummary = (summary: { children?: { text?: string }[] }) =>
-  summary?.children?.[0]?.text || ''
+export const teaserSummary = (summary: { children?: { text?: string }[] }) => summary?.children?.[0]?.text || '';
 
 export const generateArticleSlug = (title: string): string =>
   title
@@ -34,18 +29,15 @@ export const generateArticleSlug = (title: string): string =>
     .replace(/\s\s+/g, ' ')
     .toLowerCase()
     .replace(/ /g, '-')
-    .trim()
+    .trim();
 
 export const getCategorySlug = (categories: { slug: string }[]): string => {
-  if (!Array.isArray(categories) || categories.length === 0)
-    return 'uncategorized'
-  return categories[0].slug || 'uncategorized'
-}
+  if (!Array.isArray(categories) || categories.length === 0) return 'uncategorized';
+  return categories[0].slug || 'uncategorized';
+};
 
 export const teaserURL = (teaser: ArticleTeaser) => {
-  const { id, headline, categories } = teaser
-  const catagory = getCategorySlug(categories as TeaserCategory[])
-  return id && headline
-    ? `${catagory}/${id}/${generateArticleSlug(headline)}`
-    : catagory
-}
+  const { id, headline, categories } = teaser;
+  const catagory = getCategorySlug(categories as TeaserCategory[]);
+  return id && headline ? `${catagory}/${id}/${generateArticleSlug(headline)}` : catagory;
+};

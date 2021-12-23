@@ -1,9 +1,8 @@
-import { styled, getMediaQueryFromTheme } from "newskit";
+import { styled, getMediaQueryFromTheme } from 'newskit';
 
 type OffsetProps = {
-  offset: boolean | number
-}
-
+  offset: boolean | number;
+};
 
 export const OffSetArea = styled.div<OffsetProps>`
   width: 100%;
@@ -13,4 +12,4 @@ export const OffSetArea = styled.div<OffsetProps>`
     padding-top: 20px;
     padding-left: ${({ offset }) => (offset ? '300' : '0')}px;
   }
-`
+`;

@@ -8,11 +8,11 @@ export const outerGridOverride = {
   xsRowGutter: 'space070',
   lgMargin: 'space050',
   xsMargin: 'space040',
-}
+};
 
 export const innerGridOverride = {
   xlRowGutter: 'space050',
   mdRowGutter: 'space060',
   xsRowGutter: 'space070',
   xsMargin: 'space000',
-}
+};

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   styled,
   getColorCssFromTheme,
@@ -9,16 +9,14 @@ import {
   Scroll,
   Stack,
   TextBlock,
-} from 'newskit'
-export const navigationSecondaryHeight = '48px'
-import { useLocation } from 'react-router-dom'
+} from 'newskit';
+export const navigationSecondaryHeight = '48px';
+import { useLocation } from 'react-router-dom';
 
 const NavContainer = styled.div<{ backgroundColor?: string | undefined }>`
   overflow: auto;
   height: ${navigationSecondaryHeight};
-  ${({ backgroundColor }) =>
-    backgroundColor &&
-    getColorCssFromTheme('backgroundColor', backgroundColor)};
+  ${({ backgroundColor }) => backgroundColor && getColorCssFromTheme('backgroundColor', backgroundColor)};
   width: 100%;
   ${getMediaQueryFromTheme('lg')} {
     width: 300px;
@@ -26,7 +24,7 @@ const NavContainer = styled.div<{ backgroundColor?: string | undefined }>`
     position: fixed;
     left: 0;
   }
-`
+`;
 
 const StyledScroll = styled(Scroll)`
   overflow-x: auto;
@@ -35,7 +33,7 @@ const StyledScroll = styled(Scroll)`
     overflow-x: initial;
     overflow-y: initial;
   }
-`
+`;
 
 const StyledMenu = styled(Menu)`
   > ul {
@@ -55,14 +53,13 @@ const StyledMenu = styled(Menu)`
     margin-top: 2px;
     min-height: 44px;
   }
-`
+`;
 
 const StyledMenuItem = styled(MenuItem)`
   white-space: nowrap;
-`
+`;
 
 const SideNav: React.FC = (user: any) => {
-
   const sideNav = [
     {
       text: 'Account',
@@ -84,17 +81,14 @@ const SideNav: React.FC = (user: any) => {
       href: '/account/newsletters-and-alerts',
       id: 'newsletters-and-alerts',
     },
-  ]
+  ];
 
   const location = useLocation();
-  const slug = location.pathname.split('/')[location.pathname.split('/').length - 1]
-  console.log(slug)
+  const slug = location.pathname.split('/')[location.pathname.split('/').length - 1];
+  console.log(slug);
 
   return (
-    <NavContainer
-      data-testid="NavigationSecondary"
-      backgroundColor='interface020'
-    >
+    <NavContainer data-testid="NavigationSecondary" backgroundColor="interface020">
       <Block
         spaceStack={{
           lg: 'space070',
@@ -132,14 +126,16 @@ const SideNav: React.FC = (user: any) => {
             </StyledMenu>
           )}
         </StyledScroll>
-        <Stack stackDistribution='space-between' flow='vertical-center' spaceInline="space020">
+        <Stack stackDistribution="space-between" flow="vertical-center" spaceInline="space020">
           <TextBlock>{user.user.firstName}</TextBlock>
           <TextBlock>{user.user.lastName}</TextBlock>
-          <TextBlock>{user.user.address.town} {user.user.address.postcode}</TextBlock>
+          <TextBlock>
+            {user.user.address.town} {user.user.address.postcode}
+          </TextBlock>
         </Stack>
       </Block>
     </NavContainer>
-  )
-}
+  );
+};
 
-export default SideNav
+export default SideNav;

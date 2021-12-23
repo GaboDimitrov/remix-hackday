@@ -1,4 +1,4 @@
-import { VariantsObject } from '../variant-types'
+import { VariantsObject } from '../variant-types';
 
 const titleTeaserVertical: VariantsObject = {
   layout: 'vertical',
@@ -27,6 +27,6 @@ const titleTeaserVertical: VariantsObject = {
     },
     spaceStack: 'space030',
   },
-}
+};
 
-export default titleTeaserVertical
+export default titleTeaserVertical;

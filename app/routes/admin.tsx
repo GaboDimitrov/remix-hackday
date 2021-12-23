@@ -1,12 +1,12 @@
-import { Outlet, Link, useLoaderData } from "remix";
-import {Headline} from 'newskit';
+import { Outlet, Link, useLoaderData } from 'remix';
+import { Headline } from 'newskit';
 
-import { getUser } from "~/user";
-import type { Post } from "~/user";
-import adminStyles from "~/styles/admin.css";
+import { getUser } from '~/user';
+import type { Post } from '~/user';
+import adminStyles from '~/styles/admin.css';
 
 export const links = () => {
-  return [{ rel: "stylesheet", href: adminStyles }];
+  return [{ rel: 'stylesheet', href: adminStyles }];
 };
 
 export const loader = () => {
@@ -18,18 +18,18 @@ export default function Admin() {
   return (
     <div className="admin">
       <nav>
-        <Headline kickerText='My'>Admin</Headline>
+        <Headline kickerText="My">Admin</Headline>
         <ul>
-          {posts.map(post => (
+          {posts.map((post) => (
             <li key={post.slug}>
-              <Link to={`/posts/${post.slug}`}>
-                {post.title}
-              </Link>
+              <Link to={`/posts/${post.slug}`}>{post.title}</Link>
             </li>
           ))}
         </ul>
       </nav>
-      <main><Outlet /></main>
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 }

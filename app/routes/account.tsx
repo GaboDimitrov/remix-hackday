@@ -1,15 +1,15 @@
-import { Block, getMediaQueryFromTheme, styled } from "newskit";
-import React from "react";
-import { Outlet, useLoaderData } from "remix";
-import Header from "~/components/account/header";
-import Sidenav from "~/components/account/sidenav";
-import { getUserSlow } from "~/user";
+import { Block, getMediaQueryFromTheme, styled } from 'newskit';
+import React from 'react';
+import { Outlet, useLoaderData } from 'remix';
+import Header from '~/components/account/header';
+import Sidenav from '~/components/account/sidenav';
+import { getUserSlow } from '~/user';
 
 export const loader = () => {
   const user = getUserSlow();
 
-  return user 
-}
+  return user;
+};
 
 const NavWrapper = styled(Block)`
   width: 100%;
@@ -19,7 +19,7 @@ const NavWrapper = styled(Block)`
     position: sticky;
     top: 0;
   }
-`
+`;
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const LayoutWrapper = styled.div`
   ${getMediaQueryFromTheme('lg')} {
     flex-direction: initial;
   }
-`
+`;
 
 const StickyDiv = styled.div`
   position: sticky;
@@ -44,20 +44,23 @@ const StickyDiv = styled.div`
     width: initial;
     bottom: 0;
   }
-`
+`;
 
 export default function Account() {
   const user = useLoaderData();
-  return <div>
-    <NavWrapper>
-      <Header />
-    </NavWrapper>
-    <LayoutWrapper>
-          <StickyDiv>
-            <Sidenav user={user}/>
-          </StickyDiv>
-       
-    </LayoutWrapper>
-    <main><Outlet /></main>
-  </div>
+  return (
+    <div>
+      <NavWrapper>
+        <Header />
+      </NavWrapper>
+      <LayoutWrapper>
+        <StickyDiv>
+          <Sidenav user={user} />
+        </StickyDiv>
+      </LayoutWrapper>
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  );
 }

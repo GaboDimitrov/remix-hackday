@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   styled,
   getColorCssFromTheme,
@@ -12,59 +12,48 @@ import {
   IconFilledLogin,
   NewsKitIconProps,
   IconFilledHouse,
-} from 'newskit'
-import {
-  smallToMediumMobile,
-  mediumToLargeDesktop,
-} from '../common/helpers'
-import NewskitLogo from '~/components/home/common/NewskitLogo'
-import { RemixLink } from '../common/Link'
+} from 'newskit';
+import { smallToMediumMobile, mediumToLargeDesktop } from '../common/helpers';
+import NewskitLogo from '~/components/home/common/NewskitLogo';
+import { RemixLink } from '../common/Link';
 
 const NavContainer = styled.header`
   ${getColorCssFromTheme('backgroundColor', 'interfaceBrand010')};
   width: 100%;
   ${getSizingCssFromTheme('padding', 'sizing050')};
-`
+`;
 
 const DividerWrapper = styled.div`
   height: 32px;
   display: flex;
-`
+`;
 
-const BlockDesktop = mediumToLargeDesktop(Block)
+const BlockDesktop = mediumToLargeDesktop(Block);
 
 const ActionsContainer = styled(Block)`
   ${getColorCssFromTheme('backgroundColor', 'interfaceBrand010')};s
-`
+`;
 
-const BlockMobile = smallToMediumMobile(Block)
+const BlockMobile = smallToMediumMobile(Block);
 
 const ActionsBlock = styled(BlockMobile)`
   ${getColorCssFromTheme('backgroundColor', 'whiteTint020')};
   ${getSizingCssFromTheme('minHeight', 'sizing080')}
-`
- interface HeaderInterface {
-  text: string
-  link: string
-  icon: React.ReactElement<NewsKitIconProps>
-  ariaLabel?: string
+`;
+interface HeaderInterface {
+  text: string;
+  link: string;
+  icon: React.ReactElement<NewsKitIconProps>;
+  ariaLabel?: string;
 }
 
 const renderLinks = (topNav: HeaderInterface[]) => {
-  const linksLength = topNav.length
+  const linksLength = topNav.length;
   return (
     linksLength && (
-      <Stack
-        flow="horizontal-center"
-        stackDistribution="space-between"
-        spaceInline="space040"
-        wrap="nowrap"
-      >
+      <Stack flow="horizontal-center" stackDistribution="space-between" spaceInline="space040" wrap="nowrap">
         {topNav.map((link: HeaderInterface, index: number) => (
-          <Block
-            spaceInline={index < linksLength - 1 ? 'space060' : ''}
-            key={link.text}
-          >
+          <Block spaceInline={index < linksLength - 1 ? 'space060' : ''} key={link.text}>
             <Block spaceStack={{ xs: 'space000', md: 'space010' }} />
             <RemixLink
               type="standalone"
@@ -87,28 +76,20 @@ const renderLinks = (topNav: HeaderInterface[]) => {
         ))}
       </Stack>
     )
-  )
-}
+  );
+};
 const Header = (): JSX.Element => {
   const topNav = [
     {
       text: 'Go to newskit.co.uk',
       link: '/',
-      icon: (
-        <IconFilledChevronRight
-          overrides={{ size: { md: 'iconSize020', xs: 'iconSize010' } }}
-        />
-      ),
+      icon: <IconFilledChevronRight overrides={{ size: { md: 'iconSize020', xs: 'iconSize010' } }} />,
       ariaLabel: 'Go to homepage',
     },
     {
       text: 'Home',
       link: '/home',
-      icon: (
-        <IconFilledHouse
-          overrides={{ size: { md: 'iconSize020', xs: 'iconSize010' } }}
-        />
-      ),
+      icon: <IconFilledHouse overrides={{ size: { md: 'iconSize020', xs: 'iconSize010' } }} />,
       ariaLabel: 'home',
     },
   ];
@@ -116,10 +97,7 @@ const Header = (): JSX.Element => {
     <>
       {Array.isArray(topNav) && (
         <ActionsContainer>
-          <ActionsBlock
-            spaceInset="spaceInsetSquish040"
-            data-testid="action-links-mobile"
-          >
+          <ActionsBlock spaceInset="spaceInsetSquish040" data-testid="action-links-mobile">
             {renderLinks(topNav)}
           </ActionsBlock>
         </ActionsContainer>
@@ -160,14 +138,12 @@ const Header = (): JSX.Element => {
           </Block>
 
           {Array.isArray(topNav) && (
-            <BlockDesktop data-testid="action-links-desktop">
-              {renderLinks(topNav)}
-            </BlockDesktop>
+            <BlockDesktop data-testid="action-links-desktop">{renderLinks(topNav)}</BlockDesktop>
           )}
         </Stack>
       </NavContainer>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

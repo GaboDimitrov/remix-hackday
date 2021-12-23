@@ -1,8 +1,8 @@
-import React from 'react'
-import { Grid, Cell } from 'newskit'
-import { LayoutProps } from './types'
-import { outerGridOverride } from './gridUtils'
-import { getBlock } from './Block'
+import React from 'react';
+import { Grid, Cell } from 'newskit';
+import { LayoutProps } from './types';
+import { outerGridOverride } from './gridUtils';
+import { getBlock } from './Block';
 
 const Row: React.FC<LayoutProps> = ({ slice }) => (
   <Grid {...outerGridOverride} data-testid={`${slice.name}-Grid`}>
@@ -23,6 +23,6 @@ const Row: React.FC<LayoutProps> = ({ slice }) => (
       </Cell>
     ))}
   </Grid>
-)
+);
 
-export default Row
+export default Row;

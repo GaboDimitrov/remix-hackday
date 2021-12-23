@@ -1,17 +1,9 @@
-import {
-  Link,
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration
-} from "remix";
-import {ThemeProvider, newskitLightTheme} from 'newskit';
-import type { MetaFunction } from "remix";
+import { Link, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from 'remix';
+import { ThemeProvider, newskitLightTheme } from 'newskit';
+import type { MetaFunction } from 'remix';
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: 'New Remix App' };
 };
 
 export default function App() {
@@ -24,11 +16,11 @@ export default function App() {
         <Links />
       </head>
       <body>
-      <ThemeProvider theme={newskitLightTheme}>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
+        <ThemeProvider theme={newskitLightTheme}>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          {process.env.NODE_ENV === 'development' && <LiveReload />}
         </ThemeProvider>
       </body>
     </html>

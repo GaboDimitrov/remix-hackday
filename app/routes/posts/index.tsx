@@ -1,8 +1,7 @@
-import { Link, useLoaderData } from "remix";
-import {  Post } from "~/user";
+import { Link, useLoaderData } from 'remix';
+import { Post } from '~/user';
 
-export const loader = () => {
-};
+export const loader = () => {};
 
 const Posts: React.FC = () => {
   const posts = useLoaderData<Post[]>();
@@ -19,6 +18,6 @@ const Posts: React.FC = () => {
       </ul>
     </div>
   );
-}
+};
 
 export default Posts;

@@ -1,14 +1,10 @@
-import React from 'react'
-import { Button, IconFilledShare } from 'newskit'
+import React from 'react';
+import { Button, IconFilledShare } from 'newskit';
 
 const ShareButton = () => (
-  <Button
-    size="small"
-    overrides={{ stylePreset: 'buttonOutlinedPrimary' }}
-    href="https://www.newskit.co.uk/"
-  >
+  <Button size="small" overrides={{ stylePreset: 'buttonOutlinedPrimary' }} href="https://www.newskit.co.uk/">
     <IconFilledShare />
     Share
   </Button>
-)
-export default ShareButton
+);
+export default ShareButton;

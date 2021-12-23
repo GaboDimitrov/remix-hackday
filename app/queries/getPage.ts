@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
 export const GET_PAGE = gql`
   query getPage($channel: String!, $publisher: Publisher!) {
@@ -97,4 +97,4 @@ export const GET_PAGE = gql`
       }
     }
   }
-`
+`;

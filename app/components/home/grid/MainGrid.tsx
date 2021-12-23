@@ -1,25 +1,14 @@
-import React from 'react'
-import {
-  Grid,
-  Cell,
-  styled,
-  getColorCssFromTheme,
-  GridProps,
-  Block,
-} from 'newskit'
-import { LayoutProps } from './layoutTypes'
+import React from 'react';
+import { Grid, Cell, styled, getColorCssFromTheme, GridProps, Block } from 'newskit';
+import { LayoutProps } from './layoutTypes';
 
 type StyledGrid = GridProps & {
-  backgroundColor?: string
-}
+  backgroundColor?: string;
+};
 
 const StyledGrid = styled(Grid)<StyledGrid>`
-  ${({ backgroundColor, theme }) =>
-    `${getColorCssFromTheme(
-      'backgroundColor',
-      backgroundColor as string
-    )({ theme })}`}
-`
+  ${({ backgroundColor, theme }) => `${getColorCssFromTheme('backgroundColor', backgroundColor as string)({ theme })}`}
+`;
 
 export const MainGrid: React.FC<LayoutProps> = ({
   children,
@@ -34,13 +23,9 @@ export const MainGrid: React.FC<LayoutProps> = ({
     xsColumnGutter: 'space040',
     xsRowGutter: 'space000',
     xsMargin: 'space040',
-  }
+  };
   return (
-    <StyledGrid
-      data-testid={dataTestId || 'PageLayout'}
-      backgroundColor={backgroundColor}
-      {...gridProps}
-    >
+    <StyledGrid data-testid={dataTestId || 'PageLayout'} backgroundColor={backgroundColor} {...gridProps}>
       {withTopOffset && (
         <Cell xs={12}>
           <Block
@@ -62,5 +47,5 @@ export const MainGrid: React.FC<LayoutProps> = ({
         </Cell>
       )}
     </StyledGrid>
-  )
-}
+  );
+};

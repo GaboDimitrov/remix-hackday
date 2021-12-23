@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button, IconFilledChevronRight } from 'newskit'
+import React from 'react';
+import { Button, IconFilledChevronRight } from 'newskit';
 
 const ViewMoreButton: React.FC<{ href: string }> = ({ href }) => (
   <Button
@@ -11,6 +11,6 @@ const ViewMoreButton: React.FC<{ href: string }> = ({ href }) => (
     View all
     <IconFilledChevronRight overrides={{ size: 'iconSize020' }} />
   </Button>
-)
+);
 
-export default ViewMoreButton
+export default ViewMoreButton;

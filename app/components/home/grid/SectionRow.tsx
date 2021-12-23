@@ -1,52 +1,43 @@
-import React from 'react'
-import {
-  styled,
-  getColorCssFromTheme,
-  Block,
-  Divider,
-  BlockProps,
-} from 'newskit'
-import { Link } from 'remix'
-import { LayoutProps } from './types'
-import { CollectionBlock } from '../global-types'
-import StyledIconFilledChevronRight from '../common/icons/StyledIconFilledChevronRight'
-import SectionTitleBar from '../common/SectionTitleBar'
-import Row from './Row'
+import React from 'react';
+import { styled, getColorCssFromTheme, Block, Divider, BlockProps } from 'newskit';
+import { Link } from 'remix';
+import { LayoutProps } from './types';
+import { CollectionBlock } from '../global-types';
+import StyledIconFilledChevronRight from '../common/icons/StyledIconFilledChevronRight';
+import SectionTitleBar from '../common/SectionTitleBar';
+import Row from './Row';
 
 type StyledBackground = BlockProps & {
-  isDarkBackground?: boolean
-}
+  isDarkBackground?: boolean;
+};
 
 const StyledBackgroundBlock = styled(Block)<StyledBackground>`
   background: ${(props) =>
     props.isDarkBackground
       ? getColorCssFromTheme('color', 'interface030')
       : getColorCssFromTheme('color', 'transparent')};
-`
+`;
 
 const StyledDivider = styled(Divider)`
   ${getColorCssFromTheme('background', 'transparent')};
   ${getColorCssFromTheme('borderColor', 'transparent')};
-`
+`;
 
 const link = (href: string, stylePreset?: string) => (
-  <Link
-    type="standalone"
-    to={href}
-  >
+  <Link type="standalone" to={href}>
     Link
     <StyledIconFilledChevronRight overrides={{ size: 'iconSize020' }} />
   </Link>
-)
+);
 
 type SectionRowProps = {
-  collection?: CollectionBlock
-  isDarkBackground?: boolean
-  showTitle?: boolean
-  addTopSpace?: boolean
-  titleBarStylePreset?: string
-  titleBarColour?: string
-} & LayoutProps
+  collection?: CollectionBlock;
+  isDarkBackground?: boolean;
+  showTitle?: boolean;
+  addTopSpace?: boolean;
+  titleBarStylePreset?: string;
+  titleBarColour?: string;
+} & LayoutProps;
 
 export const SectionRow: React.FC<SectionRowProps> = ({
   slice,
@@ -77,4 +68,4 @@ export const SectionRow: React.FC<SectionRowProps> = ({
     </Block>
     <StyledDivider />
   </StyledBackgroundBlock>
-)
+);
